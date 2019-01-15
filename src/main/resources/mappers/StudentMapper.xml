@@ -1,0 +1,25 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ustadho.mybatis.SpringBootMyBatisXML.mapper.StudentMapper">
+    <resultMap id="detailStudentMap" type="Student">
+        <id column="id" property="id"/>
+        <result column="student_no" property="studentNo"></result>
+        <result column="student_name" property="name"></result>
+        <association property="program" javaType="Program">
+            <id property="id" column="program_id"/>
+            <result property="name" column="program_name"/>
+        </association>
+    </resultMap>
+
+    <select id="findAllObject" resultMap="detailStudentMap">
+        select s.id,
+        s.student_no,
+        s.name as student_name,
+        s.program_id,
+        p.name as program_name
+        from student s
+        left join program p on p.id=s.program_id
+    </select>
+
+</mapper>

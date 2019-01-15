@@ -1,0 +1,21 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ustadho.mybatis.SpringBootMyBatisXML.mapper.EventMapper">
+    <resultMap id="EventMap" type="Event">
+        <id column="id" property="id"/>
+        <result column="title" property="title"></result>
+        <result column="detail" property="detail"></result>
+        <result column="startDate" property="startDate"></result>
+        <result column="endDate" property="endDate"></result>
+        <result column="isActive" property="isActive"></result>
+    </resultMap>
+
+    <select id="findAll" resultMap="EventMap">
+        select * from event
+    </select>
+
+    <insert id="insert" parameterType="Event" useGeneratedKeys="true" keyProperty="id">
+        insert into event(title, detail, start_date, end_date, is_active) values(#{title}, #{detail}, #{startDate}, #{endDate}, #{isActive})
+    </insert>
+</mapper>
