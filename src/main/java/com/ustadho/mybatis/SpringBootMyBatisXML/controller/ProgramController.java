@@ -2,10 +2,7 @@ package com.ustadho.mybatis.SpringBootMyBatisXML.controller;
 
 import com.ustadho.mybatis.SpringBootMyBatisXML.domain.Program;
 import com.ustadho.mybatis.SpringBootMyBatisXML.mapper.ProgramMapper;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,4 +21,18 @@ public class ProgramController {
         return programMapper.findAll();
     }
 
+    @GetMapping("{id}")
+    public  Program findOne(@PathVariable Integer id){
+        return programMapper.findOne(id);
+    }
+
+    @PutMapping("{id}")
+    public int update(@RequestBody Program program, @PathVariable Integer id){
+        return programMapper.update(id, program);
+    }
+
+    @PostMapping
+    public int insert(@RequestBody Program p ){
+        return programMapper.insert(p);
+    }
 }

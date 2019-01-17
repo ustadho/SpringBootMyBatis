@@ -3,7 +3,7 @@
     <div class="col-lg-6">
       <div class="card">
         <div class="card-header">
-          <i class="fa fa-align-justify"></i> Simple Table
+          <i class="fa fa-align-justify"></i> Program List
         </div>
         <div class="card-body">
           <table class="table">
@@ -11,7 +11,13 @@
               <tr>
                 <th>ID</th>
                 <th>Name</th>
-                <th>Action</th>
+                <th>
+                    <button type="submit" [routerLink]="['/', { outlets: { popup: 'program-new'} }]" replaceUrl="true"
+                    queryParamsHandling="merge" class="btn btn-success btn-sm">
+                        <span class="fa fa-plus"></span>
+                        <span class="hidden-md-down" > Add </span>
+                    </button>
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -19,9 +25,12 @@
                 <td>{{p.id}}</td>
                 <td>{{p.name}}</td>
                 <td>
-                  <button type="button" class="btn btn-success btn-sm"> Edit </button>
-                  &nbsp;
-                  <button type="button" class="btn btn-warning btn-sm"> Delete </button>
+                  <button type="submit" [routerLink]="['/', { outlets: { popup: 'program/'+ p.id + '/edit'} }]" replaceUrl="true"
+                    queryParamsHandling="merge" class="btn btn-primary btn-sm">
+                        <span class="fa fa-pencil"></span>
+                        <span class="hidden-md-down" > Update </span>
+                  </button>
+                  <button type="button" class="btn btn-danger btn-sm"> Delete </button>
                 </td>
               </tr>
             </tbody>
@@ -37,6 +46,7 @@
             <li class="page-item"><a class="page-link" href="#">Next</a></li>
           </ul>
         </div>
+
       </div>
     </div>
   </div>
